@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DexMauiApp", "DexMauiApp\DexMauiApp.csproj", "{42A41443-1223-48F6-9FBA-7F38E01FB4C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DexApi", "DexApi\DexApi.csproj", "{617DCC5C-4F1B-4352-8DE4-3A83A76AF6A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DexDatabase", "DexDatabase", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tables", "Tables", "{B1935C87-CC4B-4FD7-A847-96AA2C794CCE}"
+	ProjectSection(SolutionItems) = preProject
+		Create_DEXLaneMeter.sql = Create_DEXLaneMeter.sql
+		Create_DEXMeter.sql = Create_DEXMeter.sql
+		Create_Indexes.sql = Create_Indexes.sql
+		Create_Unique_Constraint.sql = Create_Unique_Constraint.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StoredProcedures", "StoredProcedures", "{C0862E06-213A-4327-9372-62016B7DC58B}"
+	ProjectSection(SolutionItems) = preProject
+		Create_SaveDEXLaneMeter.sql = Create_SaveDEXLaneMeter.sql
+		Create_SaveDEXMeter.sql = Create_SaveDEXMeter.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{42A41443-1223-48F6-9FBA-7F38E01FB4C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42A41443-1223-48F6-9FBA-7F38E01FB4C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42A41443-1223-48F6-9FBA-7F38E01FB4C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42A41443-1223-48F6-9FBA-7F38E01FB4C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{617DCC5C-4F1B-4352-8DE4-3A83A76AF6A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{617DCC5C-4F1B-4352-8DE4-3A83A76AF6A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{617DCC5C-4F1B-4352-8DE4-3A83A76AF6A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{617DCC5C-4F1B-4352-8DE4-3A83A76AF6A6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B1935C87-CC4B-4FD7-A847-96AA2C794CCE} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{C0862E06-213A-4327-9372-62016B7DC58B} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {27C8FDB8-D7AE-4214-81F3-3F22E8282523}
+	EndGlobalSection
+EndGlobal

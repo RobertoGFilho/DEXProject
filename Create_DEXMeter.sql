@@ -1,0 +1,7 @@
+﻿CREATE TABLE DEXMeter (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Machine CHAR(1) NOT NULL,
+    DEXDateTime DATETIME2 NOT NULL,
+    MachineSerialNumber VARCHAR(50) NOT NULL,
+    ValueOfPaidVends DECIMAL(10, 2) NOT NULL
+);

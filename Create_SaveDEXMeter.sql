@@ -10,3 +10,4 @@ BEGIN
 
     SELECT SCOPE_IDENTITY() AS DexMeterId;
 END;
+

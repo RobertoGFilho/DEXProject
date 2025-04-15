@@ -5,3 +5,4 @@
     MachineSerialNumber VARCHAR(50) NOT NULL,
     ValueOfPaidVends DECIMAL(10, 2) NOT NULL
 );
+

@@ -6,3 +6,4 @@ ON DEXLaneMeter (ProductIdentifier);
 
 CREATE INDEX IX_DEXLaneMeter_DEXMeterId
 ON DEXLaneMeter (DEXMeterId);
+

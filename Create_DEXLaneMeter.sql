@@ -7,3 +7,4 @@
     ValueOfPaidSales DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (DEXMeterId) REFERENCES DEXMeter(Id)
 );
+

@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StoredProcedures", "StoredP
 		Create_SaveDEXMeter.sql = Create_SaveDEXMeter.sql
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backups", "Backups", "{D84DBC0A-7755-4775-AF29-563E5298F057}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{B1935C87-CC4B-4FD7-A847-96AA2C794CCE} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{C0862E06-213A-4327-9372-62016B7DC58B} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{D84DBC0A-7755-4775-AF29-563E5298F057} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {27C8FDB8-D7AE-4214-81F3-3F22E8282523}

@@ -36,7 +36,6 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-
 builder.Services.AddScoped<IDexParser, DexParser>();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -53,4 +52,5 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
+
 app.Run();

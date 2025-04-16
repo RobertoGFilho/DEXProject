@@ -1,25 +1,33 @@
 using DexApi.Models;
-using System;
-using System.Collections.Generic;
 
 namespace DexApi.Services
 {
     public class DexParser : IDexParser
     {
-        public (DexMeter, List<DexLaneMeter>) Parse(string content, char machine)
+        public (DexMeter, List<DexLaneMeter>) Parse(string fileContent, char machine)
         {
-            var lines = content.Split('*');
-            var dexMeter = new DexMeter { Machine = machine };
+            var lines = fileContent.Split('*', StringSplitOptions.RemoveEmptyEntries);
+            var meter = new DexMeter { Machine = machine };
             var lanes = new List<DexLaneMeter>();
 
             foreach (var line in lines)
             {
                 if (line.StartsWith("ID101"))
-                    dexMeter.MachineSerialNumber = line.Substring(5);
+                {
+                    meter.MachineSerialNumber = line.Substring(5);
+                }
                 else if (line.StartsWith("VA101"))
-                    dexMeter.ValueOfPaidVends = decimal.Parse(line.Substring(5));
-                else if (line.StartsWith("EA3"))
-                    dexMeter.DEXDateTime = DateTime.UtcNow.AddMilliseconds(-DateTime.UtcNow.Millisecond);
+                {
+                    if (decimal.TryParse(line.Substring(5), out var value))
+                        meter.ValueOfPaidVends = value;
+                }
+                else if (line.StartsWith("DA101"))
+                {
+                    if (DateTime.TryParseExact(line.Substring(5), "yyyyMMddHHmmss", null, System.Globalization.DateTimeStyles.None, out var parsedDate))
+                        meter.DEXDateTime = parsedDate;
+                    else
+                        meter.DEXDateTime = DateTime.UtcNow;
+                }
                 else if (line.StartsWith("PA101"))
                 {
                     var lane = new DexLaneMeter
@@ -29,14 +37,23 @@ namespace DexApi.Services
                     lanes.Add(lane);
                 }
                 else if (line.StartsWith("PA102"))
-                    lanes[^1].Price = decimal.Parse(line.Substring(5));
+                {
+                    if (lanes.Any() && decimal.TryParse(line.Substring(5), out var price))
+                        lanes.Last().Price = price;
+                }
                 else if (line.StartsWith("PA201"))
-                    lanes[^1].NumberOfVends = int.Parse(line.Substring(5));
+                {
+                    if (lanes.Any() && int.TryParse(line.Substring(5), out var vendCount))
+                        lanes.Last().NumberOfVends = vendCount;
+                }
                 else if (line.StartsWith("PA202"))
-                    lanes[^1].ValueOfPaidSales = decimal.Parse(line.Substring(5));
+                {
+                    if (lanes.Any() && decimal.TryParse(line.Substring(5), out var value))
+                        lanes.Last().ValueOfPaidSales = value;
+                }
             }
 
-            return (dexMeter, lanes);
+            return (meter, lanes);
         }
     }
 }

@@ -24,6 +24,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StoredProcedures", "StoredP
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backups", "Backups", "{D84DBC0A-7755-4775-AF29-563E5298F057}"
+	ProjectSection(SolutionItems) = preProject
+		DexDatabase\Backups\Backup.bak = DexDatabase\Backups\Backup.bak
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

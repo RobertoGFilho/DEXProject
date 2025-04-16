@@ -7,17 +7,21 @@ namespace DexMauiApp;
 
 public partial class MainPage : ContentPage
 {
+    // HTTP client for making API requests
     private readonly HttpClient _httpClient;
 
     public MainPage()
     {
         InitializeComponent();
+        // Initialize HTTP client with Basic Authentication
         _httpClient = new HttpClient();
         var byteArray = Encoding.ASCII.GetBytes("vendsys:NFsZGmHAGWJSZ#RuvdiV");
         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
         _httpClient.BaseAddress = new Uri("https://localhost:7297/");
     }
 
+    // Event handler for Machine A button click
+    // Picks a DEX file and sends it identified as Machine A
     private async void OnSendMachineAClicked(object sender, EventArgs e)
     {
         var dexContent = await PickDexFileAsync();
@@ -27,6 +31,8 @@ public partial class MainPage : ContentPage
             ResultLabel.Text = "❌ Arquivo inválido ou não selecionado.";
     }
 
+    // Event handler for Machine B button click
+    // Picks a DEX file and sends it identified as Machine B
     private async void OnSendMachineBClicked(object sender, EventArgs e)
     {
         var dexContent = await PickDexFileAsync();
@@ -36,6 +42,8 @@ public partial class MainPage : ContentPage
             ResultLabel.Text = "❌ Arquivo inválido ou não selecionado.";
     }
 
+    // Opens file picker to select a DEX file
+    // Returns the file content as string or null if cancelled
     private async Task<string?> PickDexFileAsync()
     {
         try
@@ -67,6 +75,10 @@ public partial class MainPage : ContentPage
         return null;
     }
 
+    // Sends DEX file content to the API
+    // Parameters:
+    // - content: The DEX file content
+    // - machine: Machine identifier ('A' or 'B')
     private async Task SendDex(string content, char machine)
     {
         var payload = new
@@ -80,6 +92,7 @@ public partial class MainPage : ContentPage
 
         try
         {
+            // Send POST request to the API
             var response = await _httpClient.PostAsync("dex/vdi-dex", contentBody);
             var result = await response.Content.ReadAsStringAsync();
             ResultLabel.Text = response.IsSuccessStatusCode ? "✅ Enviado com sucesso!" : $"❌ Erro: {result}";
